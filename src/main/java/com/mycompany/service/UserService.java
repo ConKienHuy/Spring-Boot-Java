@@ -1,4 +1,4 @@
-package com.mycompany.controller.service;
+package com.mycompany.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
