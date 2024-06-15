@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mycompany.entity.User;
-import com.mycompany.entity.UserNotFoundException;
+import com.mycompany.entity.NotFoundException;
 import com.mycompany.repository.UserRepository;
 
 import java.util.List;
@@ -22,18 +22,18 @@ public class UserService {
         repo.save(user);
     }
 
-    public User get(Integer id) throws UserNotFoundException {
+    public User get(Integer id) throws NotFoundException {
         Optional<User> result = repo.findById(id);
         if (result.isPresent()) {
             return result.get();
         }
-        throw new UserNotFoundException("Could not find any users with ID " + id);
+        throw new NotFoundException("Could not find any users with ID " + id);
     }
 
-    public void delete(Integer id) throws UserNotFoundException {
+    public void delete(Integer id) throws NotFoundException {
         Long count = repo.countById(id);
         if (count == null || count == 0) {
-            throw new UserNotFoundException("Could not find any users with ID " + id);
+            throw new NotFoundException("Could not find any users with ID " + id);
         }
         repo.deleteById(id);
     }

@@ -21,6 +21,10 @@ public class Device {
 		this.description = description;
 	}
 
+	public Device() {
+		
+	}
+
 	public Integer getId() {
 		return id;
 	}

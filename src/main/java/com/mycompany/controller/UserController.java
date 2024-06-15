@@ -6,10 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.entity.User;
-import com.mycompany.entity.UserNotFoundException;
+import com.mycompany.entity.NotFoundException;
 import com.mycompany.service.UserService;
 
 import java.util.List;
@@ -20,18 +21,17 @@ public class UserController {
     
     @GetMapping("/users")
     public String showUserList(Model model) {
-    	System.out.println("User Controller");
         List<User> listUsers = service.listAll();
         model.addAttribute("listUsers", listUsers);
 
-        return "users";
+        return "/users_template/users";
     }
 
     @GetMapping("/users/new")
     public String showNewForm(Model model) {
         model.addAttribute("user", new User());
         model.addAttribute("pageTitle", "Add New User");
-        return "user_form";
+        return "/users_template/user_form";
     }
 
     @PostMapping("/users/save")
@@ -48,8 +48,8 @@ public class UserController {
             model.addAttribute("user", user);
             model.addAttribute("pageTitle", "Edit User (ID: " + id + ")");
 
-            return "user_form";
-        } catch (UserNotFoundException e) {
+            return "/users_template/user_form";
+        } catch (NotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
             return "redirect:/users";
         }
@@ -60,7 +60,7 @@ public class UserController {
         try {
             service.delete(id);
             ra.addFlashAttribute("message", "The user ID " + id + " has been deleted.");
-        } catch (UserNotFoundException e) {
+        } catch (NotFoundException e) {
             ra.addFlashAttribute("message", e.getMessage());
         }
         return "redirect:/users";
