@@ -3,9 +3,9 @@ package com.mycompany.controller.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mycompany.entity.User;
+import com.mycompany.entity.UserNotFoundException;
 import com.mycompany.repository.UserRepository;
-import com.mycompany.user.User;
-import com.mycompany.user.UserNotFoundException;
 
 import java.util.List;
 import java.util.Optional;

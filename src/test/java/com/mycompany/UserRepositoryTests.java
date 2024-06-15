@@ -1,7 +1,7 @@
 package com.mycompany;
 
+import com.mycompany.entity.User;
 import com.mycompany.repository.UserRepository;
-import com.mycompany.user.User;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

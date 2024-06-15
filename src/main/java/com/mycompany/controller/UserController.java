@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mycompany.controller.service.UserService;
-import com.mycompany.user.User;
-import com.mycompany.user.UserNotFoundException;
+import com.mycompany.entity.User;
+import com.mycompany.entity.UserNotFoundException;
 
 import java.util.List;
 
