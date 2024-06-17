@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("/users/new")
     public String showNewForm(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("pageTitle", "Add New User");
+        model.addAttribute("pageTitle", "Thêm user mới");
         return "/users_template/user_form";
     }
 
